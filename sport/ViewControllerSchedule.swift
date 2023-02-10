@@ -22,11 +22,16 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return AppData.events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        configure(e: events[indexPath.row])
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell") as! TableViewCellSubclass
+        cell.configure(e: AppData.events[indexPath.row])
+        return cell
+        
+        
     }
     
 }
