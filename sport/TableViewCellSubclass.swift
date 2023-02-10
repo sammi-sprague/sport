@@ -28,7 +28,14 @@ class TableViewCellSubclass: UITableViewCell {
     }
     
     func configure(e: Events){
-        typeOutlet.text = 
+        if e.type{
+            typeOutlet.text = "Game"
+        }else{
+            typeOutlet.text = "Practice"
+        }
+        dateOutlet.text = e.date
+        locationOutlet.text = e.loc
+        
     }
 
 }
