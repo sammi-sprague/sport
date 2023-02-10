@@ -7,6 +7,10 @@
 
 import UIKit
 
+class AppData{
+    static var events = [Events]()
+}
+
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -14,6 +18,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+}
+
+
 }
 
 class Events: Codable{
