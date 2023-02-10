@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1B400A2995340000A45EEA /* TableViewCellSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B40092995340000A45EEA /* TableViewCellSubclass.swift */; };
 		6A8EA9A42993DBB600828C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9A32993DBB600828C4B /* AppDelegate.swift */; };
 		6A8EA9A62993DBB600828C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9A52993DBB600828C4B /* SceneDelegate.swift */; };
 		6A8EA9A82993DBB600828C4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9A72993DBB600828C4B /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 		6A8EA9BB2993DBB700828C4B /* sportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9BA2993DBB700828C4B /* sportTests.swift */; };
 		6A8EA9C52993DBB700828C4B /* sportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9C42993DBB700828C4B /* sportUITests.swift */; };
 		6A8EA9C72993DBB700828C4B /* sportUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9C62993DBB700828C4B /* sportUITestsLaunchTests.swift */; };
+		6A8EA9D42993E42700828C4B /* ViewControllerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9D32993E42700828C4B /* ViewControllerSchedule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A1B40092995340000A45EEA /* TableViewCellSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellSubclass.swift; sourceTree = "<group>"; };
 		6A8EA9A02993DBB600828C4B /* sport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8EA9A32993DBB600828C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A8EA9A52993DBB600828C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		6A8EA9C02993DBB700828C4B /* sportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8EA9C42993DBB700828C4B /* sportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sportUITests.swift; sourceTree = "<group>"; };
 		6A8EA9C62993DBB700828C4B /* sportUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sportUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6A8EA9D32993E42700828C4B /* ViewControllerSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSchedule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,12 @@
 		6A8EA9A22993DBB600828C4B /* sport */ = {
 			isa = PBXGroup;
 			children = (
+				6A1B40092995340000A45EEA /* TableViewCellSubclass.swift */,
 				6A8EA9A32993DBB600828C4B /* AppDelegate.swift */,
 				6A8EA9A52993DBB600828C4B /* SceneDelegate.swift */,
 				6A8EA9A72993DBB600828C4B /* ViewController.swift */,
 				6A8EA9A92993DBB600828C4B /* Main.storyboard */,
+				6A8EA9D32993E42700828C4B /* ViewControllerSchedule.swift */,
 				6A8EA9AC2993DBB700828C4B /* Assets.xcassets */,
 				6A8EA9AE2993DBB700828C4B /* LaunchScreen.storyboard */,
 				6A8EA9B12993DBB700828C4B /* Info.plist */,
@@ -258,9 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A1B400A2995340000A45EEA /* TableViewCellSubclass.swift in Sources */,
 				6A8EA9A82993DBB600828C4B /* ViewController.swift in Sources */,
 				6A8EA9A42993DBB600828C4B /* AppDelegate.swift in Sources */,
 				6A8EA9A62993DBB600828C4B /* SceneDelegate.swift in Sources */,
+				6A8EA9D42993E42700828C4B /* ViewControllerSchedule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
