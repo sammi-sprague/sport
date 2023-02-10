@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        AppData.events.append(Events(date: "Feb 2", type: true, here: true, opp: "CLS", loc: "CLC"))
+        AppData.events.append(Events(date: "Feb 2, 4:30", type: true, here: true, opp: "CLS", loc: "CLC"))
     }
     
 }

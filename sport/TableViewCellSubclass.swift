@@ -33,8 +33,13 @@ class TableViewCellSubclass: UITableViewCell {
         }else{
             typeOutlet.text = "Practice"
         }
+        if e.here{
+            typeOutlet.text! += " (H)"
+        }else{
+            typeOutlet.text! += " (A)"
+        }
         dateOutlet.text = e.date
-        locationOutlet.text = e.loc
+        locationOutlet.text = "@ \(e.loc)"
         
     }
 
