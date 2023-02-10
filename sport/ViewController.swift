@@ -21,7 +21,6 @@ class ViewController: UIViewController {
 }
 
 
-}
 
 class Events: Codable{
     
