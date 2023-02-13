@@ -18,6 +18,7 @@
 		6A8EA9C52993DBB700828C4B /* sportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9C42993DBB700828C4B /* sportUITests.swift */; };
 		6A8EA9C72993DBB700828C4B /* sportUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9C62993DBB700828C4B /* sportUITestsLaunchTests.swift */; };
 		6A8EA9D42993E42700828C4B /* ViewControllerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9D32993E42700828C4B /* ViewControllerSchedule.swift */; };
+		FFA7CA77299A849400DCD1FB /* eventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CA76299A849400DCD1FB /* eventInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		6A8EA9C42993DBB700828C4B /* sportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sportUITests.swift; sourceTree = "<group>"; };
 		6A8EA9C62993DBB700828C4B /* sportUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sportUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6A8EA9D32993E42700828C4B /* ViewControllerSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSchedule.swift; sourceTree = "<group>"; };
+		FFA7CA76299A849400DCD1FB /* eventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eventInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				6A8EA9A52993DBB600828C4B /* SceneDelegate.swift */,
 				6A8EA9A72993DBB600828C4B /* ViewController.swift */,
 				6A8EA9A92993DBB600828C4B /* Main.storyboard */,
+				FFA7CA76299A849400DCD1FB /* eventInfo.swift */,
 				6A8EA9D32993E42700828C4B /* ViewControllerSchedule.swift */,
 				6A8EA9AC2993DBB700828C4B /* Assets.xcassets */,
 				6A8EA9AE2993DBB700828C4B /* LaunchScreen.storyboard */,
@@ -268,6 +271,7 @@
 				6A8EA9A82993DBB600828C4B /* ViewController.swift in Sources */,
 				6A8EA9A42993DBB600828C4B /* AppDelegate.swift in Sources */,
 				6A8EA9A62993DBB600828C4B /* SceneDelegate.swift in Sources */,
+				FFA7CA77299A849400DCD1FB /* eventInfo.swift in Sources */,
 				6A8EA9D42993E42700828C4B /* ViewControllerSchedule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
