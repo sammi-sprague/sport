@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WPO-xe-R0j">
-                                <rect key="frame" x="0.0" y="84" width="393" height="685"/>
+                                <rect key="frame" x="0.0" y="139" width="393" height="630"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -77,6 +77,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7F-51-cYM">
+                                <rect key="frame" x="275" y="96" width="102" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Add Event"/>
+                                <connections>
+                                    <segue destination="gtL-U1-lDf" kind="show" id="qQE-jc-DdJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mfg-Rj-3PB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -89,6 +98,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlK-UL-q7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="101.5267175572519" y="716.90140845070425"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MQO-Jk-STX">
+            <objects>
+                <viewController id="gtL-U1-lDf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KQk-wD-gfW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="B9n-v8-Uov"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bH6-bq-Qjc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5AT-3x-sXW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="984" y="727"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Qld-vP-VWK">
