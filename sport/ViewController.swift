@@ -8,7 +8,8 @@
 import UIKit
 
 class AppData{
-    static var events = [Events]()
+    static var events = [Events(date: "Feb 2, 4:30", type: true, here: true, opp: "CLS", loc: "CLC")]
+    static var selected = events[0]
 }
 
 class ViewController: UIViewController {
@@ -16,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        AppData.events.append(Events(date: "Feb 2, 4:30", type: true, here: true, opp: "CLS", loc: "CLC"))
+        
     }
     
 }

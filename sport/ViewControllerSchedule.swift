@@ -30,8 +30,11 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell") as! TableViewCellSubclass
         cell.configure(e: AppData.events[indexPath.row])
         return cell
-        
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toAddSegue", sender: self)
+        AppData.selected = AppData.events[indexPath.row]
     }
     
 }
