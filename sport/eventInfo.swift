@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import MapKit
 
-class eventInfo: UIViewController {
+class eventInfo: UIViewController, CLLocationManagerDelegate {
 
     
     @IBOutlet weak var locOutlet: UITextField!
@@ -20,7 +21,15 @@ class eventInfo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        eventOutlet.text = AppData.selected.type
+        dateOutlet.text = AppData.selected.date
+        oppOutlet.text = AppData.selected.opp
+        if AppData.selected.here{
+            locOutlet.text = "(H) "
+        }else{
+            locOutlet.text = "(A) "
+        }
+        locOutlet.text! += AppData.selected.loc
 }
     
 

@@ -28,11 +28,8 @@ class TableViewCellSubclass: UITableViewCell {
     }
     
     func configure(e: Events){
-        if e.type{
-            typeOutlet.text = "Game"
-        }else{
-            typeOutlet.text = "Practice"
-        }
+        
+        typeOutlet.text = e.type
         if e.here{
             typeOutlet.text! += " (H)"
         }else{

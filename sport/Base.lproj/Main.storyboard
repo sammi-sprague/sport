@@ -72,7 +72,7 @@
                                             <outlet property="dateOutlet" destination="VA0-8b-08N" id="qJv-FG-vPn"/>
                                             <outlet property="locationOutlet" destination="77x-uQ-7aY" id="0NE-r1-0WB"/>
                                             <outlet property="typeOutlet" destination="zYK-qr-wLc" id="JIt-0E-kkz"/>
-                                            <segue destination="rG5-DI-HzF" kind="show" id="huk-nG-XTt"/>
+                                            <segue destination="rG5-DI-HzF" kind="show" identifier="toDetailSegue" id="huk-nG-XTt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -203,6 +203,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="VYU-1l-AUZ"/>
+                    <connections>
+                        <outlet property="dateOutlet" destination="b3b-WT-7dW" id="o8i-zh-BxQ"/>
+                        <outlet property="eventOutlet" destination="BhD-RR-8kj" id="WqM-8p-eJW"/>
+                        <outlet property="locOutlet" destination="nQE-bP-kWb" id="5tA-PV-bsz"/>
+                        <outlet property="oppOutlet" destination="aUa-lm-Vzi" id="h9a-dc-yHM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhh-GU-MMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

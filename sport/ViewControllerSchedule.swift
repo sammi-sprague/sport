@@ -33,7 +33,7 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "toAddSegue", sender: self)
+        self.performSegue(withIdentifier: "toDetailSegue", sender: self)
         AppData.selected = AppData.events[indexPath.row]
     }
     
