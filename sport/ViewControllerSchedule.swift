@@ -21,6 +21,10 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
         tbv.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tbv.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AppData.events.count
     }
