@@ -21,6 +21,10 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
         tbv.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tbv.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AppData.events.count
     }
@@ -33,8 +37,9 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "toDetailSegue", sender: self)
         AppData.selected = AppData.events[indexPath.row]
+        print(AppData.selected.type)
+        self.performSegue(withIdentifier: "toDetailSegue", sender: self)
     }
     
 }
