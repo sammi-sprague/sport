@@ -14,23 +14,33 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var locOutlet: UITextField!
     @IBOutlet weak var dateOutlet: UITextField!
     @IBOutlet weak var oppOutlet: UITextField!
+    @IBOutlet weak var oppLabelOutlet: UILabel!
     @IBOutlet weak var eventOutlet: UITextField!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        oppOutlet.isHidden = false
+        oppLabelOutlet.isHidden = false
 
         eventOutlet.text = AppData.selected.type
         dateOutlet.text = AppData.selected.date
         oppOutlet.text = AppData.selected.opp
+        if AppData.selected.type != "Game"{
+            oppOutlet.isHidden = true
+            oppLabelOutlet.isHidden = true
+        }
         if AppData.selected.here{
             locOutlet.text = "(H) "
         }else{
             locOutlet.text = "(A) "
         }
         locOutlet.text! += AppData.selected.loc
-}
+    }
     
 
     /*
