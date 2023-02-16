@@ -16,11 +16,14 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var oppOutlet: UITextField!
     @IBOutlet weak var eventOutlet: UITextField!
     
-    
+    @IBOutlet weak var mapOutlet: MKMapView!
+    let locMan = CLLocationManager()
+    var currloc: CLLocation!
+    var spots = [MKMapItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         eventOutlet.text = AppData.selected.type
         dateOutlet.text = AppData.selected.date
         oppOutlet.text = AppData.selected.opp
@@ -30,7 +33,37 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
             locOutlet.text = "(A) "
         }
         locOutlet.text! += AppData.selected.loc
-}
+        
+        locMan.delegate = self
+        locMan.desiredAccuracy = kCLLocationAccuracyBest
+        locMan.startUpdatingLocation()
+        locMan.requestWhenInUseAuthorization()
+        
+    }
+    
+    
+    @IBAction func loadAction(_ sender: Any) {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = AppData.selected.loc
+        request.region = MKCoordinateRegion(center: currloc.coordinate, latitudinalMeters: 0.05, longitudinalMeters: 0.05)
+        let search = MKLocalSearch(request: request)
+        
+        search.start { response, error in
+            guard let response = response else{return}
+            for i in response.mapItems{
+                self.spots.append(i)
+                let ann = MKPointAnnotation()
+                ann.coordinate = i.placemark.coordinate
+                ann.title = i.name
+                self.mapOutlet.addAnnotation(ann)
+            }
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currloc = locations[0]
+    }
     
 
     /*
