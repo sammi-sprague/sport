@@ -17,6 +17,12 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var pickerViewOutlet: UIPickerView!
     var things = ["Practice","Game","Team Bonding","Pasta Party"]
     var rowSpot = 0
+    
+    var vc: ViewControllerSchedule!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerViewOutlet.delegate = self
@@ -46,11 +52,16 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
     @IBAction func addButtonAction(_ sender: Any) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM dd, yyyy h:mm a"
+        dateFormatter.dateFormat = "MMM dd, h:mm a"
         let year = dateFormatter.string(from: dateOutlet.date)
         AppData.events.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!))
         print(AppData.events)
 
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("disappear")
+        vc.tbv.reloadData()
     }
     /*
     // MARK: - Navigation

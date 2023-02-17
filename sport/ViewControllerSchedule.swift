@@ -23,8 +23,15 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         tbv.reloadData()
+        print("view appearing")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddSegue"{
+            let nvc = segue.destination as! clickerView
+            nvc.vc = self
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AppData.events.count
