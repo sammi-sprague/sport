@@ -46,7 +46,7 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
     @IBAction func addButtonAction(_ sender: Any) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy h:mm a"
+        dateFormatter.dateFormat = "MM dd, yyyy h:mm a"
         let year = dateFormatter.string(from: dateOutlet.date)
         AppData.events.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!))
         print(AppData.events)
