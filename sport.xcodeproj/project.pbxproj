@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A1B400A2995340000A45EEA /* TableViewCellSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B40092995340000A45EEA /* TableViewCellSubclass.swift */; };
+		6A685A2929A5020900558895 /* GameResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A685A2829A5020900558895 /* GameResults.swift */; };
 		6A8EA9A42993DBB600828C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9A32993DBB600828C4B /* AppDelegate.swift */; };
 		6A8EA9A62993DBB600828C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9A52993DBB600828C4B /* SceneDelegate.swift */; };
 		6A8EA9A82993DBB600828C4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8EA9A72993DBB600828C4B /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		6A1B40092995340000A45EEA /* TableViewCellSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellSubclass.swift; sourceTree = "<group>"; };
+		6A685A2829A5020900558895 /* GameResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResults.swift; sourceTree = "<group>"; };
 		6A8EA9A02993DBB600828C4B /* sport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8EA9A32993DBB600828C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A8EA9A52993DBB600828C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,8 +112,9 @@
 				6A1B40092995340000A45EEA /* TableViewCellSubclass.swift */,
 				6A8EA9A32993DBB600828C4B /* AppDelegate.swift */,
 				6A8EA9A52993DBB600828C4B /* SceneDelegate.swift */,
-				6A8EA9A72993DBB600828C4B /* ViewController.swift */,
 				6A8EA9A92993DBB600828C4B /* Main.storyboard */,
+				6A8EA9A72993DBB600828C4B /* ViewController.swift */,
+				6A685A2829A5020900558895 /* GameResults.swift */,
 				FF799AD3299BCD5800D144A9 /* clickerView.swift */,
 				FFA7CA76299A849400DCD1FB /* eventInfo.swift */,
 				6A8EA9D32993E42700828C4B /* ViewControllerSchedule.swift */,
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A685A2929A5020900558895 /* GameResults.swift in Sources */,
 				6A1B400A2995340000A45EEA /* TableViewCellSubclass.swift in Sources */,
 				6A8EA9A82993DBB600828C4B /* ViewController.swift in Sources */,
 				6A8EA9A42993DBB600828C4B /* AppDelegate.swift in Sources */,

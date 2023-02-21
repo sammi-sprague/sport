@@ -276,21 +276,46 @@
             </objects>
             <point key="canvasLocation" x="101.5267175572519" y="1418.3098591549297"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Results-->
         <scene sceneID="X5N-b3-XyN">
             <objects>
-                <viewController id="Fg1-Ix-Kqy" sceneMemberID="viewController">
+                <viewController id="Fg1-Ix-Kqy" customClass="GameResults" customModule="sport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xF0-8V-Cc1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FY0-pz-fh3">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6bE-4h-qlz">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6bE-4h-qlz" id="mnn-aO-tCE">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="l4r-wx-OUg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FY0-pz-fh3" firstAttribute="leading" secondItem="l4r-wx-OUg" secondAttribute="leading" id="7D4-9h-7mI"/>
+                            <constraint firstItem="FY0-pz-fh3" firstAttribute="top" secondItem="l4r-wx-OUg" secondAttribute="top" id="BPQ-jO-DOp"/>
+                            <constraint firstItem="l4r-wx-OUg" firstAttribute="trailing" secondItem="FY0-pz-fh3" secondAttribute="trailing" id="TS9-S2-C0a"/>
+                            <constraint firstItem="l4r-wx-OUg" firstAttribute="bottom" secondItem="FY0-pz-fh3" secondAttribute="bottom" id="e0v-sx-UBd"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="trophy.fill" catalog="system" id="pxl-qa-sK2"/>
+                    <connections>
+                        <outlet property="tbv" destination="FY0-pz-fh3" id="LpB-Vj-ffs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kL-rh-eiF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-761" y="226"/>
+            <point key="canvasLocation" x="-744.27480916030527" y="716.90140845070425"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a9y-Uq-TBR">
