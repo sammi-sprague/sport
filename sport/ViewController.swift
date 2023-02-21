@@ -8,7 +8,7 @@
 import UIKit
 
 class AppData{
-    static var events = [Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", scoreCLC: 0, scoreOpp: 0)]
+    static var events = [Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC")]
     static var selected = events[0]
     static var games = [events[0]]
 }
@@ -35,7 +35,7 @@ class Events: Codable{
     var scoreCLC: Int
     var scoreOpp: Int
     
-    init(date: String, type: String, here: Bool, opp: String, loc: String, scoreCLC: Int, scoreOpp: Int){
+    init(date: String, type: String, here: Bool, opp: String, loc: String){
         self.date = "date"
         self.type = type
         self.here = here

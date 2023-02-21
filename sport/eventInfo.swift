@@ -30,6 +30,7 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
         oppOutlet.isHidden = false
         oppLabelOutlet.isHidden = false
 
+        
         eventOutlet.text = AppData.selected.type
         dateOutlet.text = AppData.selected.date
         oppOutlet.text = AppData.selected.opp
