@@ -12,6 +12,7 @@ class GameResults: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet weak var tbv: UITableView!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,11 +23,15 @@ class GameResults: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        AppData.games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")!
+        cell.textLabel?.text = "CLC \(AppData.games[indexPath.row].)"
+               return cell
+        
     }
     
 
