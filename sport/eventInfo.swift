@@ -37,6 +37,7 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
         if AppData.selected.type != "Game"{
             oppOutlet.isHidden = true
             oppLabelOutlet.isHidden = true
+            gamesScoreOutlet.isHidden = true
         }
         if AppData.selected.here{
             locOutlet.text = "(H) "
