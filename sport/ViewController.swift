@@ -36,7 +36,7 @@ class Events: Codable{
     var scoreOpp: Int
     
     init(date: String, type: String, here: Bool, opp: String, loc: String){
-        self.date = "date"
+        self.date = date
         self.type = type
         self.here = here
         self.opp = opp
