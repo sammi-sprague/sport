@@ -29,7 +29,7 @@ class GameResults: UIViewController, UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")!
-        cell.textLabel?.text = "CLC \(AppData.games[indexPath.row].)"
+        cell.textLabel?.text = "CLC \(AppData.games[indexPath.row].scoreCLC) vs \(AppData.games[indexPath.row].scoreOpp) \(AppData.games[indexPath.row].opp)"
                return cell
         
     }
