@@ -15,7 +15,9 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var dateOutlet: UITextField!
     @IBOutlet weak var oppOutlet: UITextField!
     @IBOutlet weak var oppLabelOutlet: UILabel!
+    @IBOutlet weak var gameScoreOutlet: UIButton!
     @IBOutlet weak var eventOutlet: UITextField!
+    @IBOutlet weak var updateButton: UIButton!
     
     @IBOutlet weak var mapOutlet: MKMapView!
     let locMan = CLLocationManager()
@@ -37,7 +39,7 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
         if AppData.selected.type != "Game"{
             oppOutlet.isHidden = true
             oppLabelOutlet.isHidden = true
-            gamesScoreOutlet.isHidden = true
+            updateButton.isHidden = true
         }
         if AppData.selected.here{
             locOutlet.text = "(H) "
@@ -77,7 +79,12 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
         currloc = locations[0]
     }
     
-
+    
+    @IBAction func updateScoreAction(_ sender: Any) {
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
