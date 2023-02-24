@@ -5,6 +5,12 @@
 //  Created by SAMANTHA SPRAGUE on 2/8/23.
 //
 
+
+//make a coco touch for new vc
+//make an outlet and action for button to new vc
+
+
+
 import UIKit
 
 class AppData{
