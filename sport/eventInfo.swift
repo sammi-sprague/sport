@@ -19,6 +19,9 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var eventOutlet: UITextField!
     @IBOutlet weak var updateButton: UIButton!
     
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     @IBOutlet weak var mapOutlet: MKMapView!
     let locMan = CLLocationManager()
     var currloc: CLLocation!
@@ -82,6 +85,11 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func updateScoreAction(_ sender: Any) {
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy h:mm a"
+        let year = dateFormatter.string(from: datePicker.date)
+        
+        
         
     }
     
