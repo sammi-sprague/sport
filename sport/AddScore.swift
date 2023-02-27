@@ -9,9 +9,14 @@ import UIKit
 
 class AddScore: UIViewController {
 
-    @IBOutlet weak var homePointsOutlet: UILabel!
     
-    @IBOutlet weak var awayHomeOutlet: UILabel!
+    var homeScore = 0
+    var awayScore = 0
+    
+
+    @IBOutlet weak var homeScoreOutlet: UILabel!
+    
+    @IBOutlet weak var awayScoreOutlet: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,18 +25,35 @@ class AddScore: UIViewController {
     }
     
     @IBAction func homeAddAction(_ sender: Any) {
+        homeScore += 1
+        homeScoreOutlet.text = "\(homeScore)"
     }
     
     @IBAction func homeRemoveAction(_ sender: Any) {
+        if homeScore > 0 {
+            homeScore -= 1
+            homeScoreOutlet.text = "\(homeScore)"
+        }
     }
     
     @IBAction func awayAddAction(_ sender: Any) {
+        awayScore += 1
+        awayScoreOutlet.text = "\(awayScore)"
     }
     
     @IBAction func awayRemoveAction(_ sender: Any) {
+        if awayScore > 0 {
+            awayScore -= 1
+            awayScoreOutlet.text = "\(awayScore)"
+        }
     }
     
     @IBAction func updateAction(_ sender: Any) {
+        
+        AppData.selected.setScores(scoreHome: homeScore, scoreOpp: awayScore)
+        
+        homeScoreOutlet.text = "\(homeScore)"
+        awayScoreOutlet.text = "\(awayScore)"
     }
     /*
     // MARK: - Navigation
