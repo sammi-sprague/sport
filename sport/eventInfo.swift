@@ -85,10 +85,11 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func updateScoreAction(_ sender: Any) {
-        var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, yyyy h:mm a"
-        let year = dateFormatter.string(from: datePicker.date)
+        var curDate = Date()
         
+        if curDate > AppData.selected.cDate{
+            performSegue(withIdentifier: "toScoreSegue", sender: self)
+        }
         
         
     }
