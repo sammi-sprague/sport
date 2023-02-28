@@ -17,9 +17,7 @@ class AppData{
     static var events = [Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date())]
     static var selected = events[0]
     static var games = [events[0]]
-    
-    //static var date =
-    
+    static var index = 0
 }
 
 class ViewController: UIViewController {

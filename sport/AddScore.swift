@@ -54,6 +54,7 @@ class AddScore: UIViewController {
         
         homeScoreOutlet.text = "\(homeScore)"
         awayScoreOutlet.text = "\(awayScore)"
+        AppData.events.remove(at: AppData.index)
     }
     /*
     // MARK: - Navigation
