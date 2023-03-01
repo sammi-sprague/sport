@@ -54,9 +54,10 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, h:mm a"
         let year = dateFormatter.string(from: dateOutlet.date)
-        AppData.events.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!))
-        if things[rowSpot] == "game"{
-            AppData.games.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!))
+        AppData.events.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date))
+        if things[rowSpot] == "Game"{
+            AppData.games.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date))
+            print("game")
         }
         print(AppData.events)
 

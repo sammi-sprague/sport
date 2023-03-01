@@ -14,9 +14,9 @@
 import UIKit
 
 class AppData{
-    static var events = [Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC")]
+    static var events = [Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date())]
     static var selected = events[0]
-    static var games = [events[0]]
+    static var games = [Events]()
     static var index = 0
 }
 
@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        AppData.games.append(Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date()))
         
     }
     
@@ -41,8 +42,9 @@ class Events: Codable{
     var loc: String
     var scoreCLC: Int
     var scoreOpp: Int
+    var cDate: Date
     
-    init(date: String, type: String, here: Bool, opp: String, loc: String){
+    init(date: String, type: String, here: Bool, opp: String, loc: String, d: Date){
         //self.date = "date" - A reminder of sammi's mistakes
         self.date = date
         self.type = type
@@ -51,6 +53,7 @@ class Events: Codable{
         self.loc = loc
         self.scoreCLC = 0
         self.scoreOpp = 0
+        self.cDate = d
     }
     
     func setScores(scoreHome: Int, scoreOpp: Int){

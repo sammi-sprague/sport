@@ -19,6 +19,9 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var eventOutlet: UITextField!
     @IBOutlet weak var updateButton: UIButton!
     
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     @IBOutlet weak var mapOutlet: MKMapView!
     let locMan = CLLocationManager()
     var currloc: CLLocation!
@@ -31,6 +34,7 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         oppOutlet.isHidden = false
         oppLabelOutlet.isHidden = false
+        updateButton.isHidden = false
 
         
         eventOutlet.text = AppData.selected.type
@@ -53,26 +57,27 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
         locMan.startUpdatingLocation()
         locMan.requestWhenInUseAuthorization()
         
-    }
-    
-    
-    @IBAction func loadAction(_ sender: Any) {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = AppData.selected.loc
-        request.region = MKCoordinateRegion(center: currloc.coordinate, latitudinalMeters: 0.05, longitudinalMeters: 0.05)
-        let search = MKLocalSearch(request: request)
         
-        search.start { response, error in
-            guard let response = response else{return}
-            for i in response.mapItems{
-                self.spots.append(i)
-                let ann = MKPointAnnotation()
-                ann.coordinate = i.placemark.coordinate
-                ann.title = i.name
-                self.mapOutlet.addAnnotation(ann)
-            }
-        }
     }
+    
+    
+//    @IBAction func loadAction(_ sender: Any) {
+//        let request = MKLocalSearch.Request()
+//        request.naturalLanguageQuery = AppData.selected.loc
+//        request.region = MKCoordinateRegion(center: currloc.coordinate, latitudinalMeters: 0.05, longitudinalMeters: 0.05)
+//        let search = MKLocalSearch(request: request)
+//
+//        search.start { response, error in
+//            guard let response = response else{return}
+//            for i in response.mapItems{
+//                self.spots.append(i)
+//                let ann = MKPointAnnotation()
+//                ann.coordinate = i.placemark.coordinate
+//                ann.title = i.name
+//                self.mapOutlet.addAnnotation(ann)
+//            }
+//        }
+//    }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -81,6 +86,13 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func updateScoreAction(_ sender: Any) {
+        var curDate = Date()
+        
+        if curDate > AppData.selected.cDate{
+            performSegue(withIdentifier: "toScoreSegue", sender: self)
+        }
+        
+        
     }
     
     
