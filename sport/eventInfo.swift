@@ -57,6 +57,7 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
         locMan.startUpdatingLocation()
         locMan.requestWhenInUseAuthorization()
         
+        
     }
     
     
