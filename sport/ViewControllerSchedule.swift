@@ -51,6 +51,9 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
         self.performSegue(withIdentifier: "toDetailSegue", sender: self)
     }
     
-   
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        
+        
+    }
     
 }
