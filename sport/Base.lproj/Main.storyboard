@@ -171,7 +171,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="AQU-Kt-f7r">
-                                <rect key="frame" x="8" y="524" width="360" height="51"/>
+                                <rect key="frame" x="7" y="524" width="359" height="51"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                         </subviews>
@@ -377,6 +377,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="updateAction:" destination="m33-7Z-3Jx" eventType="touchUpInside" id="2aD-ga-9RF"/>
+                                    <segue destination="R24-NA-zkt" kind="unwind" identifier="goinBack" unwindAction="unwind:" id="6wF-Fg-joi"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ak-fJ-ZhH">
@@ -397,6 +398,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8J9-rS-y94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="R24-NA-zkt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1027" y="1418"/>
         </scene>
