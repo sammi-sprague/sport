@@ -55,7 +55,18 @@ class AddScore: UIViewController {
         homeScoreOutlet.text = "\(homeScore)"
         awayScoreOutlet.text = "\(awayScore)"
         AppData.events.remove(at: AppData.index)
+        
     }
+    
+    
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        if isMovingFromParent{
+//            performSegue(withIdentifier: "unwindToDetail", sender: nil)
+//        }
+//    }
+    
+    
     /*
     // MARK: - Navigation
 
