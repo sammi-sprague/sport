@@ -59,5 +59,8 @@ class Events: Codable{
     func setScores(scoreHome: Int, scoreOpp: Int){
         self.scoreCLC = scoreHome
         self.scoreOpp = scoreOpp
+        print("method")
+        print(self.scoreOpp)
+        print(self.scoreCLC)
     }
 }

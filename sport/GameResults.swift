@@ -24,7 +24,10 @@ class GameResults: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     override func viewDidAppear(_ animated: Bool) {
         tbv.reloadData()
+        print("appear")
     }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         AppData.games.count
