@@ -50,8 +50,9 @@ class AddScore: UIViewController {
     
     @IBAction func updateAction(_ sender: Any) {
         
+        print("update")
         AppData.selected.setScores(scoreHome: homeScore, scoreOpp: awayScore)
-        
+        AppData.games.append(AppData.selected)
         homeScoreOutlet.text = "\(homeScore)"
         awayScoreOutlet.text = "\(awayScore)"
         AppData.events.remove(at: AppData.index)
@@ -59,9 +60,19 @@ class AddScore: UIViewController {
         
         
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
-        performSegue(withIdentifier: "goinBack", sender: nil)
+       // performSegue(withIdentifier: "goinBack", sender: nil)
+        
     }
 
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        print("prepare")
+//        AppData.selected.setScores(scoreHome: homeScore, scoreOpp: awayScore)
+//        print(AppData.index)
+//        print(awayScore)
+//        print(homeScore)
+//        AppData.events.remove(at: AppData.index)
+//    }
+    
 }
