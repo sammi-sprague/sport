@@ -18,7 +18,7 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var gameScoreOutlet: UIButton!
     @IBOutlet weak var eventOutlet: UITextField!
     @IBOutlet weak var updateButton: UIButton!
-    
+    var vc: ViewControllerSchedule!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
@@ -95,8 +95,11 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
         
     }
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
-        
-        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("disappear")
+        vc.tbv.reloadData()
     }
 
 }

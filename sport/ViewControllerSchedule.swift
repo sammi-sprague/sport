@@ -30,6 +30,9 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
         if segue.identifier == "toAddSegue"{
             let nvc = segue.destination as! clickerView
             nvc.vc = self
+        }else if segue.identifier == "toDetailSegue"{
+            let nvc = segue.destination as! eventInfo
+            nvc.vc = self
         }
     }
     
