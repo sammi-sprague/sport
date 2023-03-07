@@ -22,16 +22,41 @@ class AppData{
 
 class CrazyCell: UITableViewCell{
     
+    @IBOutlet weak var typeOutlet: UILabel!
+    
+    @IBOutlet weak var timeOutlet: UILabel!
+    @IBOutlet weak var locOutlet: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+    func configure(e: Events){
+        
+        typeOutlet.text = e.type
+        if e.here{
+            typeOutlet.text! += " (H)"
+        }else{
+            typeOutlet.text! += " (A)"
+        }
+        let prefixRange = e.date.startIndex.advancedBy(5)...e.date.endIndex
+        let prefix = e.date.substringWithRange(prefixRange)
+        timeOutlet.text = prefix
+        locOutlet.text = "@ \(e.loc)"
+        
+    }
+    
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
@@ -51,6 +76,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        today.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
     }
     
 }

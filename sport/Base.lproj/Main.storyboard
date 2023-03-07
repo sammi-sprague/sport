@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="459" width="393" height="310"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CrazyCell" id="xEP-1d-fGB">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CrazyCell" id="xEP-1d-fGB" customClass="CrazyCell" customModule="sport" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xEP-1d-fGB" id="Mx7-uc-xo1">
@@ -51,6 +51,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locOutlet" destination="GHn-ni-awa" id="57C-CR-i2Z"/>
+                                            <outlet property="timeOutlet" destination="jYm-Yk-yLk" id="SeA-Qp-Cfq"/>
+                                            <outlet property="typeOutlet" destination="lcu-ba-lOM" id="KW3-a2-S87"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -225,7 +230,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="AQU-Kt-f7r">
-                                <rect key="frame" x="4" y="524" width="360" height="51"/>
+                                <rect key="frame" x="3" y="524" width="361" height="51"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                         </subviews>
