@@ -18,6 +18,7 @@ class AppData{
     static var selected = events[0]
     static var games = [Events]()
     static var index = 0
+    static var announcements = [String]()
 }
 
 class CrazyCell: UITableViewCell{
@@ -28,6 +29,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         <#code#>
     }
+    
+    @IBOutlet weak var addAnnouncement: UITextField!
+    
+    @IBOutlet weak var aField: UITextView!
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         <#code#>
@@ -52,6 +57,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    
+    @IBAction func addAnnouncement(_ sender: Any) {
+        AppData.announcements.append(addAnnouncement.text!)
+        for i in AppData.announcements.count{
+            aField.text = AppData.announcements[i]
+        }
+    }
+    
     
 }
 

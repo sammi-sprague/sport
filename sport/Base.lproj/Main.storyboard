@@ -54,6 +54,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Announcements:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShC-r8-jDD">
+                                <rect key="frame" x="16" y="121" width="239" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Announcement" borderStyle="roundedRect" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="zPZ-7F-HAi">
+                                <rect key="frame" x="16" y="79" width="318" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQy-tC-EFv">
+                                <rect key="frame" x="342" y="79" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="+">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addAnnouncement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="898-Nx-1zI"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5o9-2S-pup">
+                                <rect key="frame" x="16" y="165" width="361" height="270"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.088767610490322113" green="0.67008048295974731" blue="0.64884620904922485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,6 +105,8 @@
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="aField" destination="5o9-2S-pup" id="hGz-ji-2f0"/>
+                        <outlet property="addAnnouncement" destination="zPZ-7F-HAi" id="a51-QM-I2R"/>
                         <outlet property="tableViewOutlet" destination="ll5-Z9-wbv" id="0b7-jF-B8B"/>
                     </connections>
                 </viewController>
@@ -527,6 +562,9 @@
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="trophy.fill" catalog="system" width="128" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
