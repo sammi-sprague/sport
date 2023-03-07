@@ -22,10 +22,18 @@ class AppData{
 
 class ViewController: UIViewController {
     
+    var today = [Events]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         AppData.games.append(Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date()))
+        
+        for ok in AppData.games{
+            if ok.cDate == Date(){
+                today.append(ok)
+            }
+        }
         
     }
     

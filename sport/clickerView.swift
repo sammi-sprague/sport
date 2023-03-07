@@ -55,10 +55,6 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         dateFormatter.dateFormat = "MMM dd, h:mm a"
         let year = dateFormatter.string(from: dateOutlet.date)
         AppData.events.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date))
-//        if things[rowSpot] == "Game"{
-//            AppData.games.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date))
-//            print("game")
-//        }
         print(AppData.events)
 
     }
@@ -67,6 +63,7 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         print("disappear")
         vc.tbv.reloadData()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         performSegue(withIdentifier: "throwinItBack", sender: nil)
     }

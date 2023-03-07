@@ -9,9 +9,6 @@ import UIKit
 
 class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-
-    
     @IBOutlet weak var tbv: UITableView!
     
     override func viewDidLoad() {
@@ -55,8 +52,6 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
-        
-        
     }
     
 }

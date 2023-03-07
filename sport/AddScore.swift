@@ -8,19 +8,15 @@
 import UIKit
 
 class AddScore: UIViewController {
-
     
     var homeScore = 0
     var awayScore = 0
     
-
     @IBOutlet weak var homeScoreOutlet: UILabel!
-    
     @IBOutlet weak var awayScoreOutlet: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -57,22 +53,10 @@ class AddScore: UIViewController {
         awayScoreOutlet.text = "\(awayScore)"
         AppData.events.remove(at: AppData.index)
         
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
        // performSegue(withIdentifier: "goinBack", sender: nil)
-        
     }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("prepare")
-//        AppData.selected.setScores(scoreHome: homeScore, scoreOpp: awayScore)
-//        print(AppData.index)
-//        print(awayScore)
-//        print(homeScore)
-//        AppData.events.remove(at: AppData.index)
-//    }
     
 }

@@ -19,9 +19,7 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var eventOutlet: UITextField!
     @IBOutlet weak var updateButton: UIButton!
     var vc: ViewControllerSchedule!
-    
     @IBOutlet weak var datePicker: UIDatePicker!
-    
     @IBOutlet weak var mapOutlet: MKMapView!
     let locMan = CLLocationManager()
     var currloc: CLLocation!
@@ -90,10 +88,9 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func updateScoreAction(_ sender: Any) {
-       
         performSegue(withIdentifier: "toScoreSegue", sender: self)
-        
     }
+    
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }
     
