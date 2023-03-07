@@ -20,6 +20,10 @@ class AppData{
     static var index = 0
 }
 
+class CrazyCell: UITableViewCell{
+    
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         <#code#>
