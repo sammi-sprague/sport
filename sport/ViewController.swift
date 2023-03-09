@@ -46,9 +46,12 @@ class CrazyCell: UITableViewCell{
         }else{
             typeOutlet.text! += " (A)"
         }
-        let prefixRange = e.date.startIndex.advancedBy(5)...e.date.endIndex
-        let prefix = e.date.substringWithRange(prefixRange)
-        timeOutlet.text = prefix
+        
+        let start = e.date.index(e.date.startIndex, offsetBy: 7)
+        let end = e.date.index(e.date.endIndex, offsetBy: 0)
+        let range = start..<end
+        timeOutlet.text = e.date[range]
+        
         locOutlet.text = "@ \(e.loc)"
         
     }
