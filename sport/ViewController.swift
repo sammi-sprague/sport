@@ -60,8 +60,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func addAnnouncement(_ sender: Any) {
         AppData.announcements.append(addAnnouncement.text!)
-        for i in AppData.announcements.count{
-            aField.text = AppData.announcements[i]
+        for i in AppData.announcements{
+            aField.text = i
         }
     }
     
