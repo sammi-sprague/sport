@@ -47,11 +47,10 @@ class CrazyCell: UITableViewCell{
             typeOutlet.text! += " (A)"
         }
         
-        let start = e.date.index(e.date.startIndex, offsetBy: 7)
-        let end = e.date.index(e.date.endIndex, offsetBy: 0)
-        let range = start..<end
-        timeOutlet.text = e.date[range]
-        
+//        let start = e.date.index(e.date.startIndex, offsetBy: 7)
+//        let end = e.date.index(start, offsetBy: 1)
+//        timeOutlet.text = e.date[start...end]
+//
         locOutlet.text = "@ \(e.loc)"
         
     }
@@ -86,7 +85,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CrazyCell") as! CrazyCell
+        cell.configure(e: today[indexPath.row])
+        return cell
     }
     
 }
