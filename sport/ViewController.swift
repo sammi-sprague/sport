@@ -76,8 +76,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
 
+        var cal = Calendar.current
         for ok in AppData.games{
-            if ok.cDate == Date(){
+            if cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
                 today.append(ok)
             }
         }
