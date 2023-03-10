@@ -94,7 +94,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         today.count
-    @IBAction func addAnnouncement(_ sender: Any) {
+        func addAnnouncement(_ sender: Any) {
         AppData.announcements.append(addAnnouncement.text!)
         for i in AppData.announcements{
             aField.text = i
