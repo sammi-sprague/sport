@@ -48,10 +48,14 @@ class CrazyCell: UITableViewCell{
             typeOutlet.text! += " (A)"
         }
         
-//        let start = e.date.index(e.date.startIndex, offsetBy: 7)
-//        let end = e.date.index(start, offsetBy: 1)
-//        timeOutlet.text = e.date[start...end]
-//
+        var cal =  Calendar.current
+        let hour = cal.component(.hour, from: e.cDate)
+        let min = cal.component(.minute, from: e.cDate)
+        //print(hour)
+        timeOutlet.text = "\(hour):\(min)"
+        
+        
+        
         locOutlet.text = "@ \(e.loc)"
         
     }
