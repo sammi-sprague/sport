@@ -62,11 +62,8 @@ class CrazyCell: UITableViewCell{
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var addAnnouncement: UITextField!
-    
     @IBOutlet weak var aField: UITextView!
-    
     @IBOutlet weak var tableViewOutlet: UITableView!
-    
     var today = [Events]()
     
     override func viewDidLoad() {
@@ -81,6 +78,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         for ok in AppData.games{
             if cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
                 today.append(ok)
+            }
+        }
+        
+        if let items = UserDefaults.standard.data(forKey: "myEvents") {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([Events].self, from: items) {
+                AppData.events = decoded
             }
         }
         

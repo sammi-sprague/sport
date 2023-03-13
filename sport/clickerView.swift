@@ -56,6 +56,11 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let year = dateFormatter.string(from: dateOutlet.date)
         AppData.events.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date))
         print(AppData.events)
+        
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(AppData.events) {
+            UserDefaults.standard.set(encoded, forKey: "myEvents")
+        }
 
     }
     
