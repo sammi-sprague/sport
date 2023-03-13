@@ -24,9 +24,8 @@ class AppData{
 class CrazyCell: UITableViewCell{
     
     @IBOutlet weak var typeOutlet: UILabel!
-    
-    @IBOutlet weak var timeOutlet: UILabel!
     @IBOutlet weak var locOutlet: UILabel!
+    @IBOutlet weak var timeOutlet: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,8 +53,6 @@ class CrazyCell: UITableViewCell{
         //print(hour)
         timeOutlet.text = "\(hour):\(min)"
         
-        
-        
         locOutlet.text = "@ \(e.loc)"
         
     }
@@ -67,10 +64,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var addAnnouncement: UITextField!
     
     @IBOutlet weak var aField: UITextView!
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
@@ -95,11 +88,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         today.count
-        func addAnnouncement(_ sender: Any) {
-            AppData.announcements.append(addAnnouncement.text!)
-            for i in AppData.announcements{
-                aField.text = i
-            }
+        
+    }
+    func addAnnouncement(_ sender: Any) {
+        AppData.announcements.append(addAnnouncement.text!)
+        for i in AppData.announcements{
+            aField.text = i
         }
     }
     
