@@ -68,9 +68,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var aField: UITextView!
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
@@ -95,18 +92,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         today.count
-        func addAnnouncement(_ sender: Any) {
-            AppData.announcements.append(addAnnouncement.text!)
-            for i in AppData.announcements{
-                aField.text = i
-            }
-        }
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CrazyCell") as! CrazyCell
         cell.configure(e: today[indexPath.row])
         return cell
+    }
+    
+    func addAnnouncement(_ sender: Any) {
+        AppData.announcements.append(addAnnouncement.text!)
+        for i in AppData.announcements{
+            aField.text = i
+        }
     }
     
 }
