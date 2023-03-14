@@ -24,9 +24,8 @@ class AppData{
 class CrazyCell: UITableViewCell{
     
     @IBOutlet weak var typeOutlet: UILabel!
-    
-    @IBOutlet weak var timeOutlet: UILabel!
     @IBOutlet weak var locOutlet: UILabel!
+    @IBOutlet weak var timeOutlet: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,8 +53,6 @@ class CrazyCell: UITableViewCell{
         //print(hour)
         timeOutlet.text = "\(hour):\(min)"
         
-        
-        
         locOutlet.text = "@ \(e.loc)"
         
     }
@@ -65,12 +62,10 @@ class CrazyCell: UITableViewCell{
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var addAnnouncement: UITextField!
-    
     @IBOutlet weak var aField: UITextView!
     
     
     @IBOutlet weak var tableViewOutlet: UITableView!
-    
     var today = [Events]()
     
     override func viewDidLoad() {
@@ -88,24 +83,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
+        if let items = UserDefaults.standard.data(forKey: "myEvents") {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([Events].self, from: items) {
+                AppData.events = decoded
+            }
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         today.count
-       
+        
+    }
+    func addAnnouncement(_ sender: Any) {
+        AppData.announcements.append(addAnnouncement.text!)
+        for i in AppData.announcements{
+            aField.text = i
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CrazyCell") as! CrazyCell
         cell.configure(e: today[indexPath.row])
         return cell
-    }
-    
-    func addAnnouncement(_ sender: Any) {
-        AppData.announcements.append(addAnnouncement.text!)
-        for i in AppData.announcements{
-            aField.text = i
-        }
     }
     
 }
