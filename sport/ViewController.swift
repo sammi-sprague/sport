@@ -67,6 +67,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var addAnnouncement: UITextField!
     @IBOutlet weak var aField: UITextView!
+    
+    
     @IBOutlet weak var tableViewOutlet: UITableView!
     var today = [Events]()
     
