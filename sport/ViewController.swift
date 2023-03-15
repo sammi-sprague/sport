@@ -22,7 +22,7 @@ class AppData{
     static var games = [Events]()
     static var index = 0
     static var announcements = [String]()
-    
+    static var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
 }
 
 class CrazyCell: UITableViewCell{
@@ -70,7 +70,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var ref: DatabaseReference!
     @IBOutlet weak var tableViewOutlet: UITableView!
     var today = [Events]()
-    var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let dict = snapshot.value as! [String: Any]
             var it = Events(dict: dict)
             it.key = snapshot.key
-            if !(self.last.equals(i: it)){
+            if !(AppData.last.equals(i: it)){
                 AppData.events.append(it)
                 self.tableViewOutlet.reloadData()
             }
@@ -140,15 +140,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
 
-class Events: Codable{
+class Events{
     
     var date: String
     var type: String
     var here: Bool
     var opp: String
     var loc: String
-    var scoreCLC: Int
-    var scoreOpp: Int
+    var scoreCLC = 0
+    var scoreOpp = 0
     var cDate: Date
     var key = ""
     var ref = Database.database().reference()
@@ -160,29 +160,39 @@ class Events: Codable{
         self.here = here
         self.opp = opp
         self.loc = loc
-        self.scoreCLC = 0
-        self.scoreOpp = 0
         self.cDate = d
     }
     
     init(dict: [String: Any]){
         if let n = dict["type"] as? String{
             type = n
+        }else{
+            type = "game"
         }
         if let a = dict["date"] as? String{
             date = a
+        }else{
+            date = "today"
         }
         if let b = dict["here"] as? Bool{
             here = b
+        }else{
+            here = true
         }
         if let c = dict["opp"] as? String{
             opp = c
+        }else{
+            opp = "cls"
         }
         if let f = dict["loc"] as? String{
             loc = f
+        }else{
+            loc = "here"
         }
         if let e = dict["d"] as? Date{
             cDate = e
+        }else{
+            cDate = Date()
         }
     }
     

@@ -56,13 +56,19 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, h:mm a"
         let year = dateFormatter.string(from: dateOutlet.date)
-        AppData.events.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date))
+        var e = Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date)
+        AppData.events.append(e)
         print(AppData.events)
         
 //        let encoder = JSONEncoder()
 //        if let encoded = try? encoder.encode(AppData.events) {
 //            UserDefaults.standard.set(encoded, forKey: "myEvents")
 //        }
+        
+        
+        e.saveToFirebase()
+        AppData.last = e
+        vc.tbv.reloadData()
 
     }
     

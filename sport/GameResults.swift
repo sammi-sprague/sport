@@ -9,9 +9,7 @@ import UIKit
 
 class GameResults: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     @IBOutlet weak var tbv: UITableView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
