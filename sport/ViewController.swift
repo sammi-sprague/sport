@@ -79,7 +79,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
-        
+        ref = Database.database().reference()
         
         ref.child("list").observe(.childAdded){ snapshot in
             let dict = snapshot.value as! [String: Any]
@@ -115,7 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //                AppData.events = decoded
 //            }
 //        }
-        ref = Database.database().reference()
+        
         
     }
     
