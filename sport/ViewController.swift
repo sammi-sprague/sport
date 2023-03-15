@@ -22,7 +22,7 @@ class AppData{
     static var games = [Events]()
     static var index = 0
     static var announcements = [String]()
-    static var ref: DatabaseReference!
+    
 }
 
 class CrazyCell: UITableViewCell{
@@ -67,10 +67,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var addAnnouncement: UITextField!
     @IBOutlet weak var aField: UITextView!
-    
-    
+    var ref: DatabaseReference!
     @IBOutlet weak var tableViewOutlet: UITableView!
     var today = [Events]()
+    var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,16 +86,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             var it = Events(dict: dict)
             it.key = snapshot.key
             if !(self.last.equals(i: it)){
-                self.AppData.events.append(it)
+                AppData.events.append(it)
                 self.tableViewOutlet.reloadData()
             }
         }
         
         ref.child("list").observe(.childRemoved){ snapshot in
             var k = snapshot.key
-            for var i in 0..<self.AppData.events.count{
-                if self.AppData.events[i].key == k{
-                    self.AppData.events.remove(at: i)
+            for var i in 0..<AppData.events.count{
+                if AppData.events[i].key == k{
+                    AppData.events.remove(at: i)
                     self.tableViewOutlet.reloadData()
                     break
                 }
@@ -150,6 +150,8 @@ class Events: Codable{
     var scoreCLC: Int
     var scoreOpp: Int
     var cDate: Date
+    var key = ""
+    var ref = Database.database().reference()
     
     init(date: String, type: String, here: Bool, opp: String, loc: String, d: Date){
         //self.date = "date" - A reminder of sammi's mistakes
@@ -193,7 +195,7 @@ class Events: Codable{
     }
     
     func saveToFirebase(){
-        var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": d] as [String: Any]
+        var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": cDate] as [String: Any]
         key = ref.child("list").childByAutoId().key ?? "0"
         ref.child("list").child(key).setValue(dict)
     }
