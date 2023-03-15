@@ -140,7 +140,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
 
-class Events: Codable{
+class Events{
     
     var date: String
     var type: String
@@ -185,6 +185,7 @@ class Events: Codable{
             cDate = e
         }
     }
+    
     
     func setScores(scoreHome: Int, scoreOpp: Int){
         self.scoreCLC = scoreHome
