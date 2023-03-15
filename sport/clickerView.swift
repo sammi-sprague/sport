@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     
@@ -57,10 +59,10 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         AppData.events.append(Events(date: year, type: things[rowSpot], here: false, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date))
         print(AppData.events)
         
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(AppData.events) {
-            UserDefaults.standard.set(encoded, forKey: "myEvents")
-        }
+//        let encoder = JSONEncoder()
+//        if let encoded = try? encoder.encode(AppData.events) {
+//            UserDefaults.standard.set(encoded, forKey: "myEvents")
+//        }
 
     }
     

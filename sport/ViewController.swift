@@ -12,6 +12,9 @@
 
 
 import UIKit
+import FirebaseCore
+import FirebaseDatabase
+
 
 class AppData{
     static var events = [Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date())]
@@ -19,6 +22,7 @@ class AppData{
     static var games = [Events]()
     static var index = 0
     static var announcements = [String]()
+    
 }
 
 class CrazyCell: UITableViewCell{
@@ -63,10 +67,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var addAnnouncement: UITextField!
     @IBOutlet weak var aField: UITextView!
-    
-    
+    var ref: DatabaseReference!
     @IBOutlet weak var tableViewOutlet: UITableView!
     var today = [Events]()
+    var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +79,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
+        
+        
+        ref.child("list").observe(.childAdded){ snapshot in
+            let dict = snapshot.value as! [String: Any]
+            var it = Events(dict: dict)
+            it.key = snapshot.key
+            if !(self.last.equals(i: it)){
+                AppData.events.append(it)
+                self.tableViewOutlet.reloadData()
+            }
+        }
+        
+        ref.child("list").observe(.childRemoved){ snapshot in
+            var k = snapshot.key
+            for var i in 0..<AppData.events.count{
+                if AppData.events[i].key == k{
+                    AppData.events.remove(at: i)
+                    self.tableViewOutlet.reloadData()
+                    break
+                }
+            }
+        }
 
         var cal = Calendar.current
         for ok in AppData.games{
@@ -83,12 +109,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
-        if let items = UserDefaults.standard.data(forKey: "myEvents") {
-            let decoder = JSONDecoder()
-            if let decoded = try? decoder.decode([Events].self, from: items) {
-                AppData.events = decoded
-            }
-        }
+//        if let items = UserDefaults.standard.data(forKey: "myEvents") {
+//            let decoder = JSONDecoder()
+//            if let decoded = try? decoder.decode([Events].self, from: items) {
+//                AppData.events = decoded
+//            }
+//        }
+        ref = Database.database().reference()
         
     }
     
@@ -123,6 +150,8 @@ class Events: Codable{
     var scoreCLC: Int
     var scoreOpp: Int
     var cDate: Date
+    var key = ""
+    var ref = Database.database().reference()
     
     init(date: String, type: String, here: Bool, opp: String, loc: String, d: Date){
         //self.date = "date" - A reminder of sammi's mistakes
@@ -136,6 +165,27 @@ class Events: Codable{
         self.cDate = d
     }
     
+    init(dict: [String: Any]){
+        if let n = dict["type"] as? String{
+            type = n
+        }
+        if let a = dict["date"] as? String{
+            date = a
+        }
+        if let b = dict["here"] as? Bool{
+            here = b
+        }
+        if let c = dict["opp"] as? String{
+            opp = c
+        }
+        if let f = dict["loc"] as? String{
+            loc = f
+        }
+        if let e = dict["d"] as? Date{
+            cDate = e
+        }
+    }
+    
     func setScores(scoreHome: Int, scoreOpp: Int){
         self.scoreCLC = scoreHome
         self.scoreOpp = scoreOpp
@@ -143,4 +193,22 @@ class Events: Codable{
         print(self.scoreOpp)
         print(self.scoreCLC)
     }
+    
+    func saveToFirebase(){
+        var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": cDate] as [String: Any]
+        key = ref.child("list").childByAutoId().key ?? "0"
+        ref.child("list").child(key).setValue(dict)
+    }
+    
+    func deleteFromFirebase(){
+        ref.child("list").child(key).removeValue()
+    }
+    
+    func equals(i: Events)-> Bool{
+        if type == i.type && date == i.date && here == i.here && opp == i.opp && loc == i.loc && cDate == i.cDate{
+            return true
+        }
+        return false
+    }
+
 }
