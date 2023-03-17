@@ -80,8 +80,7 @@
                                     <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addAnnouncement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="898-Nx-1zI"/>
-                                    <action selector="addAnnouncementsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hMi-sz-AeX"/>
+                                    <action selector="addAnnouncementsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uXF-hP-5rx"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5o9-2S-pup">
@@ -93,7 +92,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnH-S2-tW3">
-                                <rect key="frame" x="151" y="385" width="90" height="45"/>
+                                <rect key="frame" x="151" y="388" width="90" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Clear">
@@ -101,8 +100,7 @@
                                     <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addAnnouncement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rlr-8U-X3J"/>
-                                    <action selector="clearAnnouncements:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vCf-XN-taG"/>
+                                    <action selector="clearAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3pd-Hs-wBy"/>
                                 </connections>
                             </button>
                         </subviews>

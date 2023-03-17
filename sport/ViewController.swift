@@ -21,7 +21,7 @@ class AppData{
     static var selected = events[0]
     static var games = [Events]()
     static var index = 0
-    static var announcements = [String]()
+    static var announcements = ""
     static var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
 }
 
@@ -147,26 +147,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    func addAnnouncement(_ sender: Any) {
-        AppData.announcements.append(addAnnouncement.text!)
-        for i in AppData.announcements{
-            aField.text = i
-        }
-    }
+//    func addAnnouncement(_ sender: Any) {
+//        AppData.announcements.append(addAnnouncement.text!)
+//        for i in AppData.announcements{
+//            aField.text = i
+//        }
+//    }
     
     
     @IBAction func addAnnouncementsAction(_ sender: Any) {
-        AppData.announcements.append(addAnnouncement.text!)
-        for i in AppData.announcements{
-            aField.text = i
-        }
+        AppData.announcements += ("\n"+addAnnouncement.text!)
+        aField.text = AppData.announcements
+        addAnnouncement.text = ""
     }
-    
-    @IBAction func clearAnnouncements(_ sender: Any) {
-        for i in AppData.announcements{
-            remove(i)
-        }
-        
+
+    @IBAction func clearAction(_ sender: Any) {
+        AppData.announcements = ""
+        aField.text = AppData.announcements
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
