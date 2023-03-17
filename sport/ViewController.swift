@@ -75,7 +75,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        AppData.games.append(Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date()))
+        //AppData.games.append(Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date()))
         
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
@@ -102,6 +102,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
 
+        ref.child("scores").observe(.childAdded){ snapshot in
+            let dict = snapshot.value as! [String: Any]
+            var it = Events(dict: dict)
+            it.key = snapshot.key
+            if !(AppData.last.equals(i: it)){
+                AppData.games.append(it)
+                self.tableViewOutlet.reloadData()
+            }
+        }
+        
+        ref.child("scores").observe(.childRemoved){ snapshot in
+            var k = snapshot.key
+            for var i in 0..<AppData.games.count{
+                if AppData.games[i].key == k{
+                    AppData.games.remove(at: i)
+                    self.tableViewOutlet.reloadData()
+                    break
+                }
+            }
+        }
+        
+        
         var cal = Calendar.current
         for ok in AppData.games{
             if cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
@@ -213,18 +235,29 @@ class Events{
         print(self.scoreCLC)
     }
     
-    func saveToFirebase(){
+    func saveToFirebase(_ type: Bool){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let sDate = dateFormatter.string(from: cDate)
         
         var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": sDate] as [String: Any]
-        key = ref.child("list").childByAutoId().key ?? "0"
-        ref.child("list").child(key).setValue(dict)
+        
+        if type{
+            key = ref.child("list").childByAutoId().key ?? "0"
+            ref.child("list").child(key).setValue(dict)
+        }else{
+            key = ref.child("scores").childByAutoId().key ?? "0"
+            ref.child("scores").child(key).setValue(dict)
+        }
+        
+        
+        
+        
     }
     
     func deleteFromFirebase(){
         ref.child("list").child(key).removeValue()
+        
     }
     
     func equals(i: Events)-> Bool{

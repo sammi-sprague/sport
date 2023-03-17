@@ -66,8 +66,9 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 //        }
         
         
-        e.saveToFirebase()
+        e.saveToFirebase(true)
         AppData.last = e
+        AppData.events = AppData.events.sorted(by: {$0.cDate < $1.cDate})
         vc.tbv.reloadData()
 
     }
