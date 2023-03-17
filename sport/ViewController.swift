@@ -101,27 +101,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
-
-        ref.child("scores").observe(.childAdded){ snapshot in
-            let dict = snapshot.value as! [String: Any]
-            let it = Events(dict: dict)
-            it.key = snapshot.key
-            if !(AppData.last.equals(i: it)){
-                AppData.games.append(it)
-                self.tableViewOutlet.reloadData()
-            }
-        }
         
-        ref.child("scores").observe(.childRemoved){ snapshot in
-            let k = snapshot.key
-            for i in 0..<AppData.games.count{
-                if AppData.games[i].key == k{
-                    AppData.games.remove(at: i)
-                    self.tableViewOutlet.reloadData()
-                    break
-                }
-            }
-        }
         
         
         let cal = Calendar.current
@@ -147,12 +127,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    func addAnnouncement(_ sender: Any) {
-        AppData.announcements.append(addAnnouncement.text!)
-        for i in AppData.announcements{
-            aField.text = i
-        }
-    }
+//    func addAnnouncement(_ sender: Any) {
+//        AppData.announcements.append(addAnnouncement.text!)
+//        for i in AppData.announcements{
+//            aField.text = i
+//        }
+//    }
     
     
     @IBAction func addAnnouncementsAction(_ sender: Any) {
@@ -252,20 +232,16 @@ class Events{
         print(self.scoreCLC)
     }
     
-    func saveToFirebase(_ type: Bool){
+    func saveToFirebase(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let sDate = dateFormatter.string(from: cDate)
         
         var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": sDate] as [String: Any]
         
-        if type{
-            key = ref.child("list").childByAutoId().key ?? "0"
-            ref.child("list").child(key).setValue(dict)
-        }else{
-            key = ref.child("scores").childByAutoId().key ?? "0"
-            ref.child("scores").child(key).setValue(dict)
-        }
+        key = ref.child("list").childByAutoId().key ?? "0"
+        ref.child("list").child(key).setValue(dict)
+        
         
         
         
