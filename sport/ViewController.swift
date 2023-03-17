@@ -51,7 +51,7 @@ class CrazyCell: UITableViewCell{
             typeOutlet.text! += " (A)"
         }
         
-        var cal =  Calendar.current
+        let cal =  Calendar.current
         let hour = cal.component(.hour, from: e.cDate)
         let min = cal.component(.minute, from: e.cDate)
         //print(hour)
@@ -83,7 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         ref.child("list").observe(.childAdded){ snapshot in
             let dict = snapshot.value as! [String: Any]
-            var it = Events(dict: dict)
+            let it = Events(dict: dict)
             it.key = snapshot.key
             if !(AppData.last.equals(i: it)){
                 AppData.events.append(it)
@@ -92,8 +92,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         ref.child("list").observe(.childRemoved){ snapshot in
-            var k = snapshot.key
-            for var i in 0..<AppData.events.count{
+            let k = snapshot.key
+            for i in 0..<AppData.events.count{
                 if AppData.events[i].key == k{
                     AppData.events.remove(at: i)
                     self.tableViewOutlet.reloadData()
@@ -104,7 +104,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         ref.child("scores").observe(.childAdded){ snapshot in
             let dict = snapshot.value as! [String: Any]
-            var it = Events(dict: dict)
+            let it = Events(dict: dict)
             it.key = snapshot.key
             if !(AppData.last.equals(i: it)){
                 AppData.games.append(it)
@@ -113,8 +113,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         ref.child("scores").observe(.childRemoved){ snapshot in
-            var k = snapshot.key
-            for var i in 0..<AppData.games.count{
+            let k = snapshot.key
+            for i in 0..<AppData.games.count{
                 if AppData.games[i].key == k{
                     AppData.games.remove(at: i)
                     self.tableViewOutlet.reloadData()
@@ -124,7 +124,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         
-        var cal = Calendar.current
+        let cal = Calendar.current
         for ok in AppData.games{
             if cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
                 today.append(ok)
@@ -145,11 +145,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         today.count
         
     }
+    
+    
     func addAnnouncement(_ sender: Any) {
         AppData.announcements.append(addAnnouncement.text!)
         for i in AppData.announcements{
             aField.text = i
         }
+    }
+    
+    
+    @IBAction func addAnnouncementsAction(_ sender: Any) {
+        AppData.announcements.append(addAnnouncement.text!)
+        for i in AppData.announcements{
+            aField.text = i
+        }
+    }
+    
+    @IBAction func clearAnnouncements(_ sender: Any) {
+        for i in AppData.announcements{
+            remove(i)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
