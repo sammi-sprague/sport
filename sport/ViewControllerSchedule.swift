@@ -19,6 +19,11 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
+        AppData.events = AppData.events.sorted(by: {$0.cDate < $1.cDate})
+        
+        
         tbv.reloadData()
         print("view appearing")
     }

@@ -164,6 +164,14 @@ class Events{
     }
     
     init(dict: [String: Any]){
+        
+        if let e = dict["d"] as? String{
+            let dateFormatter = ISO8601DateFormatter()
+            cDate = dateFormatter.date(from: e)!
+        }else{
+            cDate = Date()
+        }
+        
         if let n = dict["type"] as? String{
             type = n
         }else{
@@ -189,11 +197,11 @@ class Events{
         }else{
             loc = "here"
         }
-        if let e = dict["d"] as? Date{
-            cDate = e
-        }else{
-            cDate = Date()
-        }
+//        if let e = dict["d"] as? Date{
+//            cDate = e
+//        }else{
+//            cDate = Date()
+//        }
     }
     
     
@@ -206,7 +214,11 @@ class Events{
     }
     
     func saveToFirebase(){
-        var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": cDate] as [String: Any]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let sDate = dateFormatter.string(from: cDate)
+        
+        var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": sDate] as [String: Any]
         key = ref.child("list").childByAutoId().key ?? "0"
         ref.child("list").child(key).setValue(dict)
     }
