@@ -48,7 +48,8 @@ class AddScore: UIViewController {
         
         print("update")
         AppData.selected.setScores(scoreHome: homeScore, scoreOpp: awayScore)
-        AppData.games.append(AppData.selected)
+        //AppData.games.append(AppData.selected)
+        AppData.selected.saveToFirebase2()
         homeScoreOutlet.text = "\(homeScore)"
         awayScoreOutlet.text = "\(awayScore)"
         AppData.events[AppData.index].deleteFromFirebase()
