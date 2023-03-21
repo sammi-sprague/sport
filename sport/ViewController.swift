@@ -17,7 +17,8 @@ import FirebaseDatabase
 
 
 class AppData{
-    static var events = [Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date())]
+    static var events = [Events]()
+                         //(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date())]
     static var selected = events[0]
     static var games = [Events]()
     static var index = 0
