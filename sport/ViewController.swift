@@ -125,7 +125,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         
-        
         let cal = Calendar.current
         for ok in AppData.events{
             if ok.type == "Game" && cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
@@ -226,7 +225,7 @@ class Events{
         if let n = dict["type"] as? String{
             type = n
         }else{
-            type = "game"
+            type = "Game"
         }
         if let a = dict["date"] as? String{
             date = a
@@ -287,13 +286,14 @@ class Events{
         let sDate = dateFormatter.string(from: cDate)
         var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": sDate, "hScore": scoreCLC, "aScore": scoreOpp] as [String: Any]
         
-        key = ref.child("scores").childByAutoId().key ?? "0"
+        //key = ref.child("scores").child(key)
         ref.child("scores").child(key).setValue(dict)
     }
     
     func deleteFromFirebase(){
         ref.child("list").child(key).removeValue()
         print("delete from firebase")
+        print(key)
         
     }
     
