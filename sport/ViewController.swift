@@ -17,11 +17,12 @@ import FirebaseDatabase
 
 
 class AppData{
-    static var events = [Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date())]
+    static var events = [Events]()
+                         //(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date())]
     static var selected = events[0]
     static var games = [Events]()
     static var index = 0
-    static var announcements = [String]()
+    static var announcements = ""
     static var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
 }
 
@@ -157,17 +158,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     @IBAction func addAnnouncementsAction(_ sender: Any) {
-        AppData.announcements.append(addAnnouncement.text!)
-        for i in AppData.announcements{
-            aField.text = i
-        }
+        AppData.announcements += ("\n"+addAnnouncement.text!)
+        aField.text = AppData.announcements
+        addAnnouncement.text = ""
     }
-    
-    @IBAction func clearAnnouncements(_ sender: Any) {
-        for i in AppData.announcements{
-            remove(i)
-        }
-        
+
+    @IBAction func clearAction(_ sender: Any) {
+        AppData.announcements = ""
+        aField.text = AppData.announcements
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
