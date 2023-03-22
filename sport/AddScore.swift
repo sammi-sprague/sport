@@ -53,8 +53,6 @@ class AddScore: UIViewController {
         awayScoreOutlet.text = "\(awayScore)"
         AppData.events[AppData.index].deleteFromFirebase()
         //AppData.events.remove(at: AppData.index)
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
