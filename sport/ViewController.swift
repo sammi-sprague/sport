@@ -56,9 +56,9 @@ class CrazyCell: UITableViewCell{
         let hour = cal.component(.hour, from: e.cDate)
         let min = cal.component(.minute, from: e.cDate)
         //print(hour)
-        timeOutlet.text = "\(hour):\(min)"
+        locOutlet.text = "\(hour):\(min)"
         
-        locOutlet.text = "@ \(e.loc)"
+        timeOutlet.text = "@ \(e.loc)"
         
     }
     
@@ -103,11 +103,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
+        ref.child("scores").observe(.childAdded){ snapshot in
+            let dict = snapshot.value as! [String: Any]
+            let it = Events(dict: dict)
+            it.key = snapshot.key
+            if !(AppData.last.equals(i: it)){
+                AppData.games.append(it)
+                self.tableViewOutlet.reloadData()
+            }
+        }
+        
+        ref.child("scores").observe(.childRemoved){ snapshot in
+            let k = snapshot.key
+            for i in 0..<AppData.games.count{
+                if AppData.games[i].key == k{
+                    AppData.games.remove(at: i)
+                    self.tableViewOutlet.reloadData()
+                    break
+                }
+            }
+        }
         
         
         let cal = Calendar.current
-        for ok in AppData.games{
-            if cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
+        for ok in AppData.events{
+            if ok.type == "Game" && cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
                 today.append(ok)
             }
         }
@@ -153,6 +173,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        ref.child("list").observe(.childRemoved){ snapshot in
+            let k = snapshot.key
+            for i in 0..<AppData.events.count{
+                if AppData.events[i].key == k{
+                    AppData.events.remove(at: i)
+                    self.tableViewOutlet.reloadData()
+                    break
+                }
+            }
+        }
+    }
+    
 }
 
 
@@ -192,7 +225,7 @@ class Events{
         if let n = dict["type"] as? String{
             type = n
         }else{
-            type = "game"
+            type = "Game"
         }
         if let a = dict["date"] as? String{
             date = a
@@ -214,11 +247,16 @@ class Events{
         }else{
             loc = "here"
         }
-//        if let e = dict["d"] as? Date{
-//            cDate = e
-//        }else{
-//            cDate = Date()
-//        }
+        if let g = dict["hScore"] as? Int{
+            scoreCLC = g
+        }else{
+            scoreCLC = 0
+        }
+        if let h = dict["aScore"] as? Int{
+            scoreOpp = h
+        }else{
+            scoreOpp = 0
+        }
     }
     
     
@@ -240,14 +278,22 @@ class Events{
         key = ref.child("list").childByAutoId().key ?? "0"
         ref.child("list").child(key).setValue(dict)
         
+    }
+    
+    func saveToFirebase2(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let sDate = dateFormatter.string(from: cDate)
+        var dict = ["type": type, "date": date, "here": here, "opp": opp, "loc": loc, "d": sDate, "hScore": scoreCLC, "aScore": scoreOpp] as [String: Any]
         
-        
-        
-        
+        //key = ref.child("scores").child(key)
+        ref.child("scores").child(key).setValue(dict)
     }
     
     func deleteFromFirebase(){
         ref.child("list").child(key).removeValue()
+        print("delete from firebase")
+        print(key)
         
     }
     
