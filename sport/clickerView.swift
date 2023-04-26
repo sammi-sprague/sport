@@ -30,7 +30,15 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         pickerViewOutlet.delegate = self
         pickerViewOutlet.dataSource = self
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return things[row]
         
@@ -81,5 +89,5 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     override func viewWillDisappear(_ animated: Bool) {
         performSegue(withIdentifier: "throwinItBack", sender: nil)
     }
-
+    
 }
