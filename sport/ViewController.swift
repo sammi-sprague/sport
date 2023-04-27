@@ -130,7 +130,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if ok.type == "Game" && cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
                 today.append(ok)
             }
-            
         }
         
 //        if let items = UserDefaults.standard.data(forKey: "myEvents") {

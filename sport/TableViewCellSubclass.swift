@@ -30,9 +30,9 @@ class TableViewCellSubclass: UITableViewCell {
     func configure(e: Events){
         
         typeOutlet.text = e.type
-        if e.here{
+        if e.here && e.type == "Game"{
             typeOutlet.text! += " (H)"
-        }else{
+        }else if e.type == "Game"{
             typeOutlet.text! += " (A)"
         }
         dateOutlet.text = e.date
