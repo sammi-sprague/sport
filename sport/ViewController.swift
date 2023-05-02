@@ -125,12 +125,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         
-        let cal = Calendar.current
-        for ok in AppData.events{
-            if ok.type == "Game" && cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
-                today.append(ok)
-            }
-        }
         
 //        if let items = UserDefaults.standard.data(forKey: "myEvents") {
 //            let decoder = JSONDecoder()
@@ -150,7 +144,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         today.count
-        
     }
     
     
@@ -181,6 +174,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        print("homepage appearing")
         ref.child("list").observe(.childRemoved){ snapshot in
             let k = snapshot.key
             for i in 0..<AppData.events.count{
@@ -191,7 +186,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
+        
+        todayTBV()
+        
     }
+    
+    func todayTBV(){
+        for i in 0..<today.count{
+            tableViewOutlet.deleteRows(at: i, with: nil)
+        }
+        
+        let cal = Calendar.current
+        for ok in AppData.events{
+            if cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
+                today.append(ok)
+            }
+        }
+        
+        
+        tableViewOutlet.reloadData()
+    }
+    
+    
     
 }
 
