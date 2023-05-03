@@ -24,6 +24,7 @@ class AppData{
     static var index = 0
     static var announcements = ""
     static var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
+    
 }
 
 class CrazyCell: UITableViewCell{
@@ -80,6 +81,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
+        
+        //FIX
         ref = Database.database().reference()
         
         ref.child("list").observe(.childAdded){ snapshot in
@@ -176,7 +179,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         
         print("homepage appearing")
-        ref.child("list").observe(.childRemoved){ snapshot in
+        AppData.ref.child("list").observe(.childRemoved){ snapshot in
             let k = snapshot.key
             for i in 0..<AppData.events.count{
                 if AppData.events[i].key == k{
@@ -192,9 +195,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func todayTBV(){
-        for i in 0..<today.count{
-            tableViewOutlet.deleteRows(at: i, with: nil)
-        }
+        
+        today.removeAll()
+        tableViewOutlet.reloadData()
         
         let cal = Calendar.current
         for ok in AppData.events{
@@ -202,8 +205,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 today.append(ok)
             }
         }
-        
-        
         tableViewOutlet.reloadData()
     }
     
