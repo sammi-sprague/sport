@@ -60,34 +60,36 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             return things.count
     }
 
-    @IBAction func addButtonAction(_ sender: Any) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, h:mm a"
-        let year = dateFormatter.string(from: dateOutlet.date)
-        
-        var clc = locationOutlet.text?.lowercased()
-        var here = false
-        
-        if clc == "clc" || clc == "crystal lake central" || clc == "central" || clc == "home"{
-            here = true
+        @IBAction func addButtonAction(_ sender: Any) {
+            if AppData.login{
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM dd, h:mm a"
+                let year = dateFormatter.string(from: dateOutlet.date)
+                
+                var clc = locationOutlet.text?.lowercased()
+                var here = false
+                
+                if clc == "clc" || clc == "crystal lake central" || clc == "central" || clc == "home"{
+                    here = true
+                }
+                
+                var e = Events(date: year, type: things[rowSpot], here: here, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date)
+                //AppData.events.append(e)
+                print(AppData.events)
+                
+                //        let encoder = JSONEncoder()
+                //        if let encoded = try? encoder.encode(AppData.events) {
+                //            UserDefaults.standard.set(encoded, forKey: "myEvents")
+                //        }
+                
+                
+                e.saveToFirebase()
+                AppData.last = e
+                AppData.events = AppData.events.sorted(by: {$0.cDate < $1.cDate})
+                vc.tbv.reloadData()
+            }
+            
         }
-        
-        var e = Events(date: year, type: things[rowSpot], here: here, opp: opponentOutlet.text!, loc: locationOutlet.text!, d: dateOutlet.date)
-        //AppData.events.append(e)
-        print(AppData.events)
-        
-//        let encoder = JSONEncoder()
-//        if let encoded = try? encoder.encode(AppData.events) {
-//            UserDefaults.standard.set(encoded, forKey: "myEvents")
-//        }
-        
-        
-        e.saveToFirebase()
-        AppData.last = e
-        AppData.events = AppData.events.sorted(by: {$0.cDate < $1.cDate})
-        vc.tbv.reloadData()
-
-    }
     
     override func viewDidDisappear(_ animated: Bool) {
         print("disappear")
