@@ -84,6 +84,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
+        
+        //FIX
         ref = Database.database().reference()
         
         ref.child("list").observe(.childAdded){ snapshot in
@@ -129,12 +131,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         
-        let cal = Calendar.current
-        for ok in AppData.events{
-            if ok.type == "Game" && cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
-                today.append(ok)
-            }
-        }
         
         //        if let items = UserDefaults.standard.data(forKey: "myEvents") {
         //            let decoder = JSONDecoder()
@@ -154,7 +150,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         today.count
-        
     }
     
     
@@ -185,7 +180,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ref.child("list").observe(.childRemoved){ snapshot in
+        
+        print("homepage appearing")
+        AppData.ref.child("list").observe(.childRemoved){ snapshot in
             let k = snapshot.key
             for i in 0..<AppData.events.count{
                 if AppData.events[i].key == k{
@@ -195,7 +192,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
+        
+        todayTBV()
+        
     }
+    
+    func todayTBV(){
+        
+        today.removeAll()
+        tableViewOutlet.reloadData()
+        
+        let cal = Calendar.current
+        for ok in AppData.events{
+            if cal.component(.day, from: ok.cDate) == cal.component(.day, from: Date()) && cal.component(.month, from: ok.cDate) == cal.component(.month, from: Date()){
+                today.append(ok)
+            }
+        }
+        tableViewOutlet.reloadData()
+    }
+    
+    
     
     
     @IBAction func enterAction(_ sender: Any) {
