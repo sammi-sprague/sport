@@ -248,7 +248,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Event"/>
                                 <connections>
-                                    <segue destination="KH0-RY-CFC" kind="show" identifier="toAddSegue" id="qKf-zw-T4H"/>
+                                    <action selector="addEvent:" destination="jeE-aO-erM" eventType="touchUpInside" id="TNb-5F-j1N"/>
+                                    <segue destination="KH0-RY-CFC" kind="show" identifier="toAddSegue" id="J8i-WX-eqN"/>
                                 </connections>
                             </button>
                         </subviews>

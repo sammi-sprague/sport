@@ -28,14 +28,29 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
         print("view appearing")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddSegue"{
-            let nvc = segue.destination as! clickerView
-            nvc.vc = self
-        }else if segue.identifier == "toDetailSegue"{
-            let nvc = segue.destination as! eventInfo
-            nvc.vc = self
+    
+    
+    @IBAction func addEvent(_ sender: UIButton) {
+        
+        
+        if AppData.login{
+            performSegue(withIdentifier: "toAddSegue", sender: nil)
         }
+    }
+    
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            
+        if segue.identifier == "toAddSegue"{
+                let nvc = segue.destination as! clickerView
+                nvc.vc = self
+            }else if segue.identifier == "toDetailSegue"{
+                let nvc = segue.destination as! eventInfo
+                nvc.vc = self
+            }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

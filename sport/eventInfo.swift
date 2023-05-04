@@ -88,7 +88,9 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func updateScoreAction(_ sender: Any) {
-        performSegue(withIdentifier: "toScoreSegue", sender: self)
+        if AppData.login{
+            performSegue(withIdentifier: "toScoreSegue", sender: self)
+        }
     }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
