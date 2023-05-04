@@ -82,7 +82,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
         
-        //FIX
         ref = Database.database().reference()
         
         ref.child("list").observe(.childAdded){ snapshot in
@@ -95,7 +94,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
-        ref.child("list").observe(.childRemoved){ snapshot in
+       ref.child("list").observe(.childRemoved){ snapshot in
             let k = snapshot.key
             for i in 0..<AppData.events.count{
                 if AppData.events[i].key == k{
@@ -178,8 +177,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         
+//        for i in 0..<AppData.events.count{
+//            if AppData.events[i].cDate < Date(){
+//                AppData.events[i].deleteFromFirebase()
+//            }
+//        }
+        
         print("homepage appearing")
-        AppData.ref.child("list").observe(.childRemoved){ snapshot in
+        ref.child("list").observe(.childRemoved){ snapshot in
             let k = snapshot.key
             for i in 0..<AppData.events.count{
                 if AppData.events[i].key == k{
@@ -189,6 +194,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
+        
+        
         
         todayTBV()
         

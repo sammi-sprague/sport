@@ -23,14 +23,6 @@ class ViewControllerSchedule: UIViewController, UITableViewDelegate, UITableView
         
         AppData.events = AppData.events.sorted(by: {$0.cDate < $1.cDate})
         
-        for i in 0..<AppData.events.count{
-            if AppData.events[i].cDate < Date(){
-                AppData.events[i].deleteFromFirebase()
-            }
-        }
-        
-        
-        
         tbv.reloadData()
         print("view appearing")
     }
