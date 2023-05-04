@@ -25,6 +25,9 @@ class AppData{
     static var announcements = ""
     static var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
     static var login = false
+    
+    static let alert = UIAlertController(title: "Not allowed", message: "Only coaches have this ability", preferredStyle: .alert)
+    static let okAction = UIAlertAction(title: "ok", style: .default)
 }
 
 class CrazyCell: UITableViewCell{
@@ -76,12 +79,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var code = ""
     var codeCheck = "9265"
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //AppData.games.append(Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date()))
         
+
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
         
@@ -182,7 +185,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         
         print("homepage appearing")
-        AppData.ref.child("list").observe(.childRemoved){ snapshot in
+        ref.child("list").observe(.childRemoved){ snapshot in
             let k = snapshot.key
             for i in 0..<AppData.events.count{
                 if AppData.events[i].key == k{

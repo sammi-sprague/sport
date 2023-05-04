@@ -89,6 +89,9 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             AppData.events = AppData.events.sorted(by: {$0.cDate < $1.cDate})
             vc.tbv.reloadData()
             
+        }else{
+            AppData.alert.addAction(AppData.okAction)
+            present(AppData.alert, animated: true, completion: nil)
         }
     }
     
