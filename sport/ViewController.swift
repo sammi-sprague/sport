@@ -24,7 +24,10 @@ class AppData{
     static var index = 0
     static var announcements = ""
     static var last = Events(date: "", type: "", here: true, opp: "", loc: "", d: Date())
+    static var login = false
     
+    static let alert = UIAlertController(title: "Not allowed", message: "Only coaches have this ability", preferredStyle: .alert)
+    static let okAction = UIAlertAction(title: "ok", style: .default)
 }
 
 class CrazyCell: UITableViewCell{
@@ -71,14 +74,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var aField: UITextView!
     var ref: DatabaseReference!
     @IBOutlet weak var tableViewOutlet: UITableView!
+    @IBOutlet weak var loginOutlet: UITextField!
     var today = [Events]()
-    
+    var code = ""
+    var codeCheck = "9265"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //AppData.games.append(Events(date: "Feb 2, 4:30", type: "Game", here: true, opp: "CLS", loc: "CLC", d: Date()))
         
+
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
         
@@ -128,12 +134,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
-//        if let items = UserDefaults.standard.data(forKey: "myEvents") {
-//            let decoder = JSONDecoder()
-//            if let decoded = try? decoder.decode([Events].self, from: items) {
-//                AppData.events = decoded
-//            }
-//        }
+        //        if let items = UserDefaults.standard.data(forKey: "myEvents") {
+        //            let decoder = JSONDecoder()
+        //            if let decoded = try? decoder.decode([Events].self, from: items) {
+        //                AppData.events = decoded
+        //            }
+        //        }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -149,12 +155,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-//    func addAnnouncement(_ sender: Any) {
-//        AppData.announcements.append(addAnnouncement.text!)
-//        for i in AppData.announcements{
-//            aField.text = i
-//        }
-//    }
+    //    func addAnnouncement(_ sender: Any) {
+    //        AppData.announcements.append(addAnnouncement.text!)
+    //        for i in AppData.announcements{
+    //            aField.text = i
+    //        }
+    //    }
     
     
     @IBAction func addAnnouncementsAction(_ sender: Any) {
@@ -163,7 +169,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         aField.text = AppData.announcements
         addAnnouncement.text = ""
     }
-
+    
     @IBAction func clearAction(_ sender: Any) {
         AppData.announcements = ""
         aField.text = AppData.announcements
@@ -217,8 +223,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
+    
+    @IBAction func enterAction(_ sender: Any) {
+        code = loginOutlet.text!
+        if codeCheck == code{
+            AppData.login = true
+        }else{ AppData.login = false
+            
+        }
+        
+        
+        
+    }
+    
 }
-
 
 
 class Events{

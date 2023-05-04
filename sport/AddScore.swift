@@ -45,15 +45,16 @@ class AddScore: UIViewController {
     }
     
     @IBAction func updateAction(_ sender: Any) {
-        
-        print("update")
-        AppData.selected.setScores(scoreHome: homeScore, scoreOpp: awayScore)
-        //AppData.games.append(AppData.selected)
-        AppData.selected.saveToFirebase2()
-        homeScoreOutlet.text = "\(homeScore)"
-        awayScoreOutlet.text = "\(awayScore)"
-        AppData.events[AppData.index].deleteFromFirebase()
-        //AppData.events.remove(at: AppData.index)
+        if AppData.login{
+            print("update")
+            AppData.selected.setScores(scoreHome: homeScore, scoreOpp: awayScore)
+            //AppData.games.append(AppData.selected)
+            AppData.selected.saveToFirebase2()
+            homeScoreOutlet.text = "\(homeScore)"
+            awayScoreOutlet.text = "\(awayScore)"
+            AppData.events[AppData.index].deleteFromFirebase()
+            //AppData.events.remove(at: AppData.index)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
