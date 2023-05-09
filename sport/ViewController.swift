@@ -77,7 +77,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var loginOutlet: UITextField!
     var today = [Events]()
     var code = ""
-    var codeCheck = "9265"
+    var codeCheck = "92511"
     
     override func viewDidLoad() {
         super.viewDidLoad()
