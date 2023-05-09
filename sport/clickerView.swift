@@ -32,6 +32,7 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        AppData.alert.addAction(AppData.okAction)
     }
     
     @objc func dismissKeyboard() {
@@ -85,18 +86,20 @@ class clickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             
             
             e.saveToFirebase()
+            AppData.events.append(e)
             AppData.last = e
             AppData.events = AppData.events.sorted(by: {$0.cDate < $1.cDate})
             vc.tbv.reloadData()
             
         }else{
-            AppData.alert.addAction(AppData.okAction)
+            
             present(AppData.alert, animated: true, completion: nil)
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         print("disappear")
+        
         vc.tbv.reloadData()
     }
     

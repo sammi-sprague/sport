@@ -22,20 +22,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CrazyCell" id="xEP-1d-fGB" customClass="CrazyCell" customModule="sport" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="44.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xEP-1d-fGB" id="Mx7-uc-xo1">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYm-Yk-yLk">
-                                                    <rect key="frame" x="331" y="11" width="42" height="22"/>
+                                                    <rect key="frame" x="331" y="10.999999999999998" width="42" height="22.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcu-ba-lOM">
-                                                    <rect key="frame" x="20" y="11" width="132" height="22"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="132" height="22.333333333333329"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="132" id="N4s-T0-gNN"/>
                                                     </constraints>
@@ -44,7 +44,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHn-ni-awa">
-                                                    <rect key="frame" x="173" y="9.9999999999999982" width="139" height="21.333333333333329"/>
+                                                    <rect key="frame" x="173" y="10.000000000000002" width="139" height="21.666666666666671"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="139" id="dkr-8A-Ztz"/>
                                                     </constraints>
@@ -106,7 +106,7 @@
                                     <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="enterAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gwr-K5-FUm"/>
+                                    <action selector="enterAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VxQ-EN-4Eo"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5o9-2S-pup">

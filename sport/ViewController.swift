@@ -77,7 +77,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var loginOutlet: UITextField!
     var today = [Events]()
     var code = ""
-    var codeCheck = "9265"
+    var codeCheck = "92511"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -221,20 +221,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableViewOutlet.reloadData()
     }
     
-    
-    
-    
-    @IBAction func enterAction(_ sender: Any) {
+    @IBAction func enterAction(_ sender: UIButton) {
         code = loginOutlet.text!
-        if codeCheck == code{
-            AppData.login = true
-        }else{ AppData.login = false
-            
-        }
-        
-        
-        
+                if codeCheck == code{
+                    AppData.login = true
+                    print("coach thing works")
+                }
     }
+    
+    
+    
+//    @IBAction func enterAction(_ sender: Any) {
+//        code = loginOutlet.text!
+//        if codeCheck == code{
+//            AppData.login = true
+//
+//        }
+//    }
+    
+    
+    
     
 }
 

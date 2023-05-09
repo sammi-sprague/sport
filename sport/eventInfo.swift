@@ -27,6 +27,7 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppData.alert.addAction(AppData.okAction)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,9 +48,9 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
             oppLabelOutlet.isHidden = true
             updateButton.isHidden = true
         }
-        if AppData.selected.here{
+        if AppData.selected.here && AppData.selected.type == "Game"{
             locOutlet.text = "(H) "
-        }else{
+        }else if AppData.selected.type == "Game"{
             locOutlet.text = "(A) "
         }
         locOutlet.text! += AppData.selected.loc
@@ -90,6 +91,8 @@ class eventInfo: UIViewController, CLLocationManagerDelegate {
     @IBAction func updateScoreAction(_ sender: Any) {
         if AppData.login{
             performSegue(withIdentifier: "toScoreSegue", sender: self)
+        }else{
+            present(AppData.alert, animated: true, completion: nil)
         }
     }
     
